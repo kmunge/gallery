@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404
 import datetime as dt
 from .models import Image, Category, Location
 
+
 # Create your views here.
 def all_images(request):
     location = Location.get_location()
@@ -10,6 +11,7 @@ def all_images(request):
     title = "gallery"
     
     return render(request, 'all_images/gallery.html', {"title":title, "image":image,"locations":location})
+
 
 def search_results(request):
     
@@ -24,7 +26,9 @@ def search_results(request):
         message = "You haven't searched for any image Category"
         return render(request, 'all_images/search.html',{"message":message})
 
+
 def filter_by_location(request,location_id):
+    
     try:
         location = Location.get_location()
         images_filtered = Image.objects.filter(location = location_id)
