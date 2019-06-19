@@ -1,0 +1,67 @@
+{% extends 'all_images/base.html' %}
+
+{% block content %}
+{{block.super}}
+<h1> <strong>GALLERY ARENA</strong>  </h1>
+<p class="text-muted" style="text-align:center">This is how I drip</p> 
+<div class="container-fluid" id="background">
+  <div class="jumbotron" style="margin-top:3%" id="jumbo">
+      <form class="navbar-form" role="search" action="{% url 'search_results'%}">
+          <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search image by Category" name="image" >
+              <br>
+              <div class="input-group-btn">               
+                  <button class="btn btn-default" style="margin-left:5px" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              </div>
+          </div>
+      </form>
+  </div>
+    <!-- Looping through images   -->
+    <div class="row">
+    {% for image_item in image %}
+    <div class="col-md-4" style="padding:.4%">
+      <img src="{{image_item.image.url}}" class="img-responsive" alt="Image" style=" width:400px;height:200px;padding:0;"alt="">
+      <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#{{image_item.id}}">
+        view
+      </button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="{{image_item.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{image_item.name|upper}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <img src="{{image_item.image.url}}" class="img-responsive" alt="Image" style="width:750px; height:450px; padding:0;" alt="">
+              
+              <br>
+              <div>
+              <p> <strong>Description: </strong>{{image_item.description}}</p>
+              <p><strong>Posted on: </strong>{{image_item.pub_date}}</p>
+              <p><strong>Location: </strong>{{image_item.location}}</p>
+              <p><strong>Category: </strong>{{image_item.category}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-info">Copy Link</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    {% empty %}
+    <div class="row">
+      <h2 class="text-center">No image found!</h2>
+    </div>
+    {% endfor %}
+  
+</div>
+</div>
+
+{% endblock %}
+
+ 
