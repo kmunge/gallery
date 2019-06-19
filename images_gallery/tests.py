@@ -23,7 +23,6 @@ class LocationTestClass(TestCase):
         location = Location.objects.all()
         self.assertTrue(len(location) == 0)
 
-
 class CategoryTestClass(TestCase):
     # Set up method
     def setUp(self):
@@ -45,9 +44,7 @@ class CategoryTestClass(TestCase):
         category = Category.objects.all()
         self.assertTrue(len(category) == 0)
 
-
 class ImageTestClass(TestCase):
-
     # Set up method
     def setUp(self):
         # Location class test
@@ -60,7 +57,6 @@ class ImageTestClass(TestCase):
         # Image class Test
         self.image = Image(image = "",name="nature goodness", description = "I love this view", pub_date = "10/2/2019", location = self.kenya, category = self.nature)
         self.image.save_image()
-
 
     # Testing  instance
     def test_instance(self):
@@ -77,7 +73,6 @@ class ImageTestClass(TestCase):
         self.image.delete_image()
         images = Image.objects.all()
         self.assertTrue(len(images) == 0)
-
 
     # Testing getting image by id 
     def test_get_image_by_id(self):
