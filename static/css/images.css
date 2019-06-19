@@ -1,0 +1,32 @@
+h1 {
+    text-align: center;
+    font-size: 350%;
+    text-decoration: underline;
+    color:rgb(12, 124, 90);
+}
+
+h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 300%;
+    text-decoration: underline;
+}
+#jumbo {
+    background-color: burlywood;
+}
+#background {
+    background-color: rgba(212, 233, 216, 0.534)
+}
+.quote{
+    font-family: 'Pacifico', cursive;
+    font-size: 200%;
+}
+.btn-lg {
+    border-color: cadetblue;
+}
+.modal-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 200%;
+}
+.footer-copyright {
+    font-size: 200%;
+}
